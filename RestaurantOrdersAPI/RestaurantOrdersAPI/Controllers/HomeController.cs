@@ -28,7 +28,8 @@ namespace RestaurantOrdersAPI.Controllers
         /// <returns>JSON по адресу api/orders</returns>
         [HttpGet]
         [Route("orders")]
-        public IEnumerable<Order> Orders() => restaurantRepository.Orders;
+        public IEnumerable<Order> Orders() => 
+            restaurantRepository.Orders;
 
         /// <summary>
         /// Получить заказ по номеру
@@ -37,7 +38,8 @@ namespace RestaurantOrdersAPI.Controllers
         /// <returns>JSON по адресу api/orders/{номер заказа}</returns>
         [HttpGet]
         [Route("orders/{number}")]
-        public Order Orders(int number) => restaurantRepository.GetOrder(number);
+        public Order Orders(int number) => 
+            restaurantRepository.GetOrder(number);
 
         /// <summary>
         /// Получить список товаров
@@ -45,6 +47,16 @@ namespace RestaurantOrdersAPI.Controllers
         /// <returns>JSON по адресу api/products</returns>
         [HttpGet]
         [Route("products")]
-        public IEnumerable<Product> Products() => restaurantRepository.Products;
+        public IEnumerable<Product> Products() => 
+            restaurantRepository.Products;
+
+        /// <summary>
+        /// Получить уникальный номер
+        /// </summary>
+        /// <returns>Строка по адресу api/nextnumber</returns>
+        [HttpGet]
+        [Route("nextnumber")]
+        public string NextNumber() =>
+            restaurantRepository.NextNumber;
     }
 }
