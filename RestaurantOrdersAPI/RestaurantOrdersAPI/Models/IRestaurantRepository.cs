@@ -39,7 +39,7 @@ namespace RestaurantOrdersAPI.Models
         /// <summary>
         /// Получить заказ
         /// </summary>
-        public Order GetOrder();
+        public Order GetOrder(int orderNumber);
 
     }
 }

@@ -42,9 +42,14 @@ namespace RestaurantOrdersAPI.Models
             oldOrder.Products = order.Products;
         }
 
-        public Order GetOrder()
+        public Order GetOrder(int orderNumber)
         {
-            throw new NotImplementedException();
+            Order? order = FakeDataBase.Orders.FirstOrDefault(o => o.OrderNumber == orderNumber);
+
+            if (order == null)
+                throw new Exception("Заказ не найден");
+
+            return order;
         }
 
         public void RemoveOrder(int orderNumber)
