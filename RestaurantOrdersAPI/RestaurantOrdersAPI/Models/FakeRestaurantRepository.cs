@@ -44,7 +44,7 @@ namespace RestaurantOrdersAPI.Models
 
         public void ChangeOrder(Order order)
         {
-            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.OrderId == order.OrderId);
+            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.Number == order.Number);
 
             if (oldOrder == null)
                 throw new Exception("Заказ не найден");
@@ -58,9 +58,9 @@ namespace RestaurantOrdersAPI.Models
             oldOrder.Products = order.Products;
         }
 
-        public Order GetOrder(int orderNumber)
+        public Order GetOrder(string orderNumber)
         {
-            Order? order = FakeDataBase.Orders.FirstOrDefault(o => o.OrderId == orderNumber);
+            Order? order = FakeDataBase.Orders.FirstOrDefault(o => o.Number == orderNumber);
 
             if (order == null)
                 throw new Exception("Заказ не найден");
@@ -68,16 +68,16 @@ namespace RestaurantOrdersAPI.Models
             return order;
         }
 
-        public void RemoveOrder(int orderNumber)
+        public void RemoveOrder(string orderNumber)
         {
-            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.OrderId == orderNumber);
+            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.Number == orderNumber);
 
             if (oldOrder == null)
                 throw new Exception("Заказ не найден");
 
             foreach (var item in oldOrder.Products) // Удаление товаров внутри заказа
                 FakeDataBase.ProductsDetails.RemoveAll(p => p.ProductDetailsId == item.ProductDetailsId);
-            FakeDataBase.Orders.RemoveAll(o => o.OrderId == orderNumber); // Удаление заказа
+            FakeDataBase.Orders.RemoveAll(o => o.Number == orderNumber); // Удаление заказа
         }
 
         ~FakeRestaurantRepository()

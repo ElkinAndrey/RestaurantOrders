@@ -38,7 +38,7 @@ namespace RestaurantOrdersAPI.Controllers
         /// <returns>JSON по адресу api/orders/{номер заказа}</returns>
         [HttpGet]
         [Route("orders/{number}")]
-        public Order Orders(int number) => 
+        public Order Orders(string number) => 
             restaurantRepository.GetOrder(number);
 
         /// <summary>
@@ -71,5 +71,18 @@ namespace RestaurantOrdersAPI.Controllers
         [Route("nextnumber")]
         public string NextNumber() =>
             restaurantRepository.NextNumber;
+
+
+        [HttpDelete("order/{number}")]
+        public void RemoveOrder(string number) {
+            try
+            {
+                restaurantRepository.RemoveOrder(number);
+            }
+            catch(Exception ex)
+            {
+                // Обработка ошибки, если нет элемента с нужным номером
+            }
+        }
     }
 }
