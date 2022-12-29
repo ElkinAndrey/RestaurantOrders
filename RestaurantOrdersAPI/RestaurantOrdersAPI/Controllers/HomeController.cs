@@ -9,7 +9,7 @@ namespace RestaurantOrdersAPI.Controllers
         [Route("/")]
         public string[] Get() 
         {
-            Thread.Sleep(1000); // Таймер, имитация работы сервера
+            Thread.Sleep(1000); // РўР°Р№РјРµСЂ, РёРјРёС‚Р°С†РёСЏ СЂР°Р±РѕС‚С‹ СЃРµСЂРІРµСЂР°
             return new string[] { "Hello world", "Hello world 2" };
         }
     }

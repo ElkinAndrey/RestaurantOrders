@@ -6,7 +6,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Настройте конвейер HTTP-запросов
+// РќР°СЃС‚СЂРѕР№С‚Рµ РєРѕРЅРІРµР№РµСЂ HTTP-Р·Р°РїСЂРѕСЃРѕРІ
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -18,7 +18,7 @@ app.UseHttpsRedirection();
 app.MapControllers();
 
 app.UseCors(options =>
-    options.WithOrigins("http://localhost:3000") // Кому можно получать данные с сервера
+    options.WithOrigins("http://localhost:3000") // РљРѕРјСѓ РјРѕР¶РЅРѕ РїРѕР»СѓС‡Р°С‚СЊ РґР°РЅРЅС‹Рµ СЃ СЃРµСЂРІРµСЂР°
     .AllowAnyMethod()
     .AllowAnyHeader());
 
