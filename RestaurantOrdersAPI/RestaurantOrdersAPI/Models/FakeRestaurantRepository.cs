@@ -37,6 +37,7 @@ namespace RestaurantOrdersAPI.Models
 
         public void AddOrder(Order order)
         {
+
             FakeDataBase.Orders.Add(order);
             FakeDataBase.ProductsDetails.AddRange(order.Products);
         }

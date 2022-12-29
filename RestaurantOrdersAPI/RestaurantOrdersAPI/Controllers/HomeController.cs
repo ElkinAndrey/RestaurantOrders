@@ -51,6 +51,19 @@ namespace RestaurantOrdersAPI.Controllers
             restaurantRepository.Products;
 
         /// <summary>
+        /// Добавить новый закак
+        /// </summary>
+        /// <param name="order">Новый заказ</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("order")]
+        public Order Order([FromBody] Order order)
+        {
+            restaurantRepository.AddOrder(order);
+            return order;
+        }
+
+        /// <summary>
         /// Получить уникальный номер
         /// </summary>
         /// <returns>Строка по адресу api/nextnumber</returns>
