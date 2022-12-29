@@ -1,24 +1,33 @@
 using Microsoft.AspNetCore.Mvc;
+using RestaurantOrdersAPI.Data;
 using RestaurantOrdersAPI.Models;
 
 namespace RestaurantOrdersAPI.Controllers
 {
     [ApiController]
+    [Route("api")]
     public class HomeController : ControllerBase
     {
+        /// <summary>
+        /// Хранилище ресторана
+        /// </summary>
         private IRestaurantRepository restaurantRepository;
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="restaurantRepository">Храниличе ресторана</param>
         public HomeController(IRestaurantRepository restaurantRepository)
         {
             this.restaurantRepository = restaurantRepository;
         }
 
+        /// <summary>
+        /// Получить список заказов
+        /// </summary>
+        /// <returns>JSON по адресу api/orders</returns>
         [HttpGet]
-        [Route("/")]
-        public string[] Get() 
-        {
-            Thread.Sleep(1000); // Таймер, имитация работы сервера
-            return new string[] { "Hello world", "Hello world 2" };
-        }
+        [Route("orders")]
+        public IEnumerable<Order> Orders() => restaurantRepository.Orders;
     }
 }
