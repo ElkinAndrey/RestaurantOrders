@@ -12,7 +12,13 @@ namespace RestaurantOrdersAPI.Models
             }
         }
 
-        public List<Product> Product => throw new NotImplementedException();
+        public List<Product> Product
+        {
+            get
+            {
+                return FakeDataBase.Products;
+            }
+        }
 
         public void AddOrder(Order order)
         {
