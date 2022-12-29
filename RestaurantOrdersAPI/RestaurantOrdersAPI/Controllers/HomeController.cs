@@ -7,7 +7,10 @@ namespace RestaurantOrdersAPI.Controllers
     {
         [HttpGet]
         [Route("/")]
-        public string[] Get() => new string[] { "Hello world" };
-
+        public string[] Get() 
+        {
+            Thread.Sleep(1000); // Таймер, имитация работы сервера
+            return new string[] { "Hello world", "Hello world 2" };
+        }
     }
 }

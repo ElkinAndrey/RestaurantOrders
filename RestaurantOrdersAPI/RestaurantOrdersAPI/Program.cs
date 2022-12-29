@@ -6,7 +6,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Настройте конвейер HTTP-запросов
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -16,5 +16,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapControllers();
+
+app.UseCors(options =>
+    options.WithOrigins("http://localhost:3000") // Кому можно получать данные с сервера
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.Run();
