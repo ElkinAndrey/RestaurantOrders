@@ -7,6 +7,8 @@ namespace RestaurantOrdersAPI.Models
     /// </summary>
     static public class FakeDataBase
     {
+        static public List<string> NextNumber = new List<string>() { "1234" };
+
         /// <summary>
         /// Таблица с продуктами
         /// </summary>
@@ -36,21 +38,21 @@ namespace RestaurantOrdersAPI.Models
         {
             new Order 
             { 
-                OrderNumber = 1, 
+                OrderId = 1, 
                 PaymentMethod = "Наличные",
                 TotalPrice = ProductsDetails[0].Product.ProductPrice + ProductsDetails[1].Product.ProductPrice,
                 Products = new List<ProductDetails> { ProductsDetails[0], ProductsDetails[1] },      
             },
             new Order
             {
-                OrderNumber = 2,
+                OrderId = 2,
                 PaymentMethod = "В рассрочку",
                 TotalPrice = ProductsDetails[2].Product.ProductPrice + ProductsDetails[3].Product.ProductPrice,
                 Products = new List<ProductDetails> { ProductsDetails[2], ProductsDetails[3] },
             },
             new Order
             {
-                OrderNumber = 3,
+                OrderId = 3,
                 PaymentMethod = "В рассрочку",
                 TotalPrice = ProductsDetails[4].Product.ProductPrice,
                 Products = new List<ProductDetails> { ProductsDetails[4] },
