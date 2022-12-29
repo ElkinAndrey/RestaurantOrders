@@ -8,10 +8,15 @@ namespace RestaurantOrdersAPI.Data
     public class Order
     {
         /// <summary>
-        /// Номер заказа, однозначный ключ
+        /// Id, однозначный ключ
         /// </summary>
         [Key]
-        public int OrderNumber { get; set; }
+        public int OrderId { get; set; }
+
+        /// <summary>
+        /// Номер заказа
+        /// </summary>
+        public string Number { get; set; }
 
         /// <summary>
         /// Полная стоимость заказа
