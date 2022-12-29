@@ -77,14 +77,35 @@ namespace RestaurantOrdersAPI.Controllers
         /// </summary>
         /// <param name="number">Номер удаляемого заказа</param>
         [HttpDelete("order/{number}")]
-        public void RemoveOrder(string number) {
+        public StatusCodeResult RemoveOrder(string number) {
             try
             {
                 restaurantRepository.RemoveOrder(number);
+                return Ok();
             }
             catch(Exception ex)
             {
-                // Обработка ошибки, если нет элемента с нужным номером
+                return NotFound();
+            }
+        }
+
+        /// <summary>
+        /// Обновить заказ
+        /// </summary>
+        /// <param name="order">Обновленный заказ</param>
+        /// <returns></returns>
+        [HttpPatch("order/{number}")]
+        public StatusCodeResult ChangeOrder(string number, [FromBody] Order order)
+        {
+            try
+            {
+                order.Number = number;
+                restaurantRepository.ChangeOrder(order);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
             }
         }
     }
