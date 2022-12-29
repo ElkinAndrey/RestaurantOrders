@@ -22,7 +22,7 @@ namespace RestaurantOrdersAPI.Models
 
         public void AddOrder(Order order)
         {
-            throw new NotImplementedException();
+            FakeDataBase.Orders.Add(order);
         }
 
         public void ChangeOrder(Order order)
