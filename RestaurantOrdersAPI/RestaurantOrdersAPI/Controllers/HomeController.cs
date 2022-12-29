@@ -31,6 +31,15 @@ namespace RestaurantOrdersAPI.Controllers
         public IEnumerable<Order> Orders() => restaurantRepository.Orders;
 
         /// <summary>
+        /// Получить заказ по номеру
+        /// </summary>
+        /// <param name="number">Номер заказа</param>
+        /// <returns>JSON по адресу api/orders/{номер заказа}</returns>
+        [HttpGet]
+        [Route("orders/{number}")]
+        public Order Orders(int number) => restaurantRepository.GetOrder(number);
+
+        /// <summary>
         /// Получить список товаров
         /// </summary>
         /// <returns>JSON по адресу api/products</returns>
