@@ -72,7 +72,10 @@ namespace RestaurantOrdersAPI.Controllers
         public string NextNumber() =>
             restaurantRepository.NextNumber;
 
-
+        /// <summary>
+        /// Удалить заказ
+        /// </summary>
+        /// <param name="number">Номер удаляемого заказа</param>
         [HttpDelete("order/{number}")]
         public void RemoveOrder(string number) {
             try
