@@ -4,7 +4,13 @@ namespace RestaurantOrdersAPI.Models
 {
     public class FakeRestaurantRepository : IRestaurantRepository
     {
-        public List<Order> Orders => throw new NotImplementedException();
+        public List<Order> Orders
+        {
+            get
+            {
+                return FakeDataBase.Orders;
+            }
+        }
 
         public List<Product> Product => throw new NotImplementedException();
 
