@@ -54,7 +54,14 @@ namespace RestaurantOrdersAPI.Models
 
         public void RemoveOrder(int orderNumber)
         {
-            throw new NotImplementedException();
+            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.OrderNumber == orderNumber);
+
+            if (oldOrder == null)
+                throw new Exception("Заказ не найден");
+
+            foreach (var item in oldOrder.Products) // Удаление товаров внутри заказа
+                FakeDataBase.ProductsDetails.RemoveAll(p => p.ProductDetailsId == item.ProductDetailsId);
+            FakeDataBase.Orders.RemoveAll(o => o.OrderNumber == orderNumber); // Удаление заказа
         }
     }
 }
