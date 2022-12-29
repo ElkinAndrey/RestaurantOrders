@@ -29,5 +29,13 @@ namespace RestaurantOrdersAPI.Controllers
         [HttpGet]
         [Route("orders")]
         public IEnumerable<Order> Orders() => restaurantRepository.Orders;
+
+        /// <summary>
+        /// Получить список товаров
+        /// </summary>
+        /// <returns>JSON по адресу api/products</returns>
+        [HttpGet]
+        [Route("products")]
+        public IEnumerable<Product> Products() => restaurantRepository.Products;
     }
 }

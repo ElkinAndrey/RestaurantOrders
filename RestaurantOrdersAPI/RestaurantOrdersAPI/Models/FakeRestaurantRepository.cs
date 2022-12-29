@@ -12,7 +12,7 @@ namespace RestaurantOrdersAPI.Models
             }
         }
 
-        public List<Product> Product
+        public List<Product> Products
         {
             get
             {

@@ -16,7 +16,7 @@ namespace RestaurantOrdersAPI.Models
         /// <summary>
         /// Получить список товаров
         /// </summary>
-        public List<Product> Product { get; }
+        public List<Product> Products { get; }
 
         /// <summary>
         /// Добавить заказ
