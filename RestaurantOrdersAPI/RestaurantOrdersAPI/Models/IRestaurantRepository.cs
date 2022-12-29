@@ -9,6 +9,11 @@ namespace RestaurantOrdersAPI.Models
     public interface IRestaurantRepository
     {
         /// <summary>
+        /// Получить уникальный номер
+        /// </summary>
+        public string NextNumber { get; }
+
+        /// <summary>
         /// Получить список заказов
         /// </summary>
         public List<Order> Orders { get; }

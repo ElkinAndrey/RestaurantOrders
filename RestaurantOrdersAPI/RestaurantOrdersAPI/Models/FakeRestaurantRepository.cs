@@ -4,6 +4,21 @@ namespace RestaurantOrdersAPI.Models
 {
     public class FakeRestaurantRepository : IRestaurantRepository
     {
+        private GetNumber getNumber;
+
+        public FakeRestaurantRepository()
+        {
+            this.getNumber = GetNumber.getInstance(FakeDataBase.NextNumber[0]);
+        }
+
+        public string NextNumber
+        {
+            get
+            {
+                return getNumber.NextNumber;
+            }
+        }
+
         public List<Order> Orders
         {
             get
@@ -28,7 +43,7 @@ namespace RestaurantOrdersAPI.Models
 
         public void ChangeOrder(Order order)
         {
-            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.OrderNumber == order.OrderNumber);
+            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.OrderId == order.OrderId);
 
             if (oldOrder == null)
                 throw new Exception("Заказ не найден");
@@ -44,7 +59,7 @@ namespace RestaurantOrdersAPI.Models
 
         public Order GetOrder(int orderNumber)
         {
-            Order? order = FakeDataBase.Orders.FirstOrDefault(o => o.OrderNumber == orderNumber);
+            Order? order = FakeDataBase.Orders.FirstOrDefault(o => o.OrderId == orderNumber);
 
             if (order == null)
                 throw new Exception("Заказ не найден");
@@ -54,14 +69,19 @@ namespace RestaurantOrdersAPI.Models
 
         public void RemoveOrder(int orderNumber)
         {
-            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.OrderNumber == orderNumber);
+            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.OrderId == orderNumber);
 
             if (oldOrder == null)
                 throw new Exception("Заказ не найден");
 
             foreach (var item in oldOrder.Products) // Удаление товаров внутри заказа
                 FakeDataBase.ProductsDetails.RemoveAll(p => p.ProductDetailsId == item.ProductDetailsId);
-            FakeDataBase.Orders.RemoveAll(o => o.OrderNumber == orderNumber); // Удаление заказа
+            FakeDataBase.Orders.RemoveAll(o => o.OrderId == orderNumber); // Удаление заказа
+        }
+
+        ~FakeRestaurantRepository()
+        {
+            FakeDataBase.NextNumber[0] = this.NextNumber;
         }
     }
 }
