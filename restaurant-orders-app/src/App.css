@@ -1,0 +1,11 @@
+/* Добавить сторонний шрифт */
+@font-face {
+  font-family: GardensCM;
+  src: url("../public/GardensCM.ttf");
+}
+
+/* Применить для всех блоков */
+* {
+  /* Установить шрифт */
+  font-family: GardensCM, Arial;
+}
