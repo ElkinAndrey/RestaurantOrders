@@ -22,13 +22,21 @@ namespace RestaurantOrdersAPI.Controllers
             this.restaurantRepository = restaurantRepository;
         }
 
+        [HttpGet]
+        [Route("/")]
+        public string[] Get()
+        {
+            Thread.Sleep(1000); // Таймер, имитация работы сервера
+            return new string[] { "Hello world", "Hello world 2" };
+        }
+
         /// <summary>
         /// Получить список заказов
         /// </summary>
         /// <returns>JSON по адресу api/orders</returns>
         [HttpGet]
         [Route("orders")]
-        public IEnumerable<Order> Orders() => 
+        public async Task<ActionResult<IEnumerable<Order>>> Orders() => 
             restaurantRepository.Orders;
 
         /// <summary>
