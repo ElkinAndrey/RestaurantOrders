@@ -22,6 +22,9 @@ const Select = ({ value, onChange, options, startName }) => {
 
   document.addEventListener("click", (e) => {
     const div = document.getElementsByClassName(classes.select).item(0);
+    if (div === null) {
+      return; 
+    }
     const withinBoundaries = e.composedPath().includes(div);
     let selectHeader = document
       .getElementsByClassName(classes.select__header)
