@@ -3,14 +3,13 @@ import classes from "./InputWithIcon.module.css";
 
 const InputWithIcon = ({
   id,
-  value,
-  onChange,
   label = "",
   icon = "",
   labelSize = "12px",
   background = "#ffffff",
   readOnly = false,
   style={},
+  margin="0px",
   ...props
 }) => {
   document.addEventListener("mousedown", (e) => {
@@ -43,7 +42,7 @@ const InputWithIcon = ({
     <div
       id={`${id}-myInput`}
       className={classes.input}
-      style={{ background: background }}
+      style={{ background: background, margin: margin }}
     >
       <div
         id={`${id}-myInput_label`}
@@ -65,8 +64,6 @@ const InputWithIcon = ({
         id={`${id}-myInput_input`}
         style={{ background: background, ...style }}
         {...props}
-        value={value}
-        onChange={onChange}
         readOnly={readOnly}
       />
     </div>
