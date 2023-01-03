@@ -10,8 +10,22 @@
   font-family: GardensCM, Arial;
 
   /* Убрать выделение кнопок при нажатии на телефоне */
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent;
+}
+
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  width: 10px; /* ширина для вертикального скролла */
+  height: 10px; /* высота для горизонтального скролла */
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 5px;
 }
 
 html body {
