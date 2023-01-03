@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import RadioButton from "./UI/RadioButton/RadioButton";
 
 const Header = () => {
-  let [checked, setChecked] = useState("CreateOrder"); // id выбранной radio button
+  let [checked, setChecked] = useState(useLocation().pathname.slice(1)); // id выбранной radio button
 
   let history = useNavigate();
 
