@@ -14,7 +14,7 @@ const RadioButton = ({ buttons, value, onChange, margin="0px", position="left", 
               checked={btn.value === value ? true : false}
               onChange={() => onChange(btn.value)}
             />
-            <label for={`radio-${btn.value}`} style={{padding : padding}}>{btn.name}</label>
+            <label htmlFor={`radio-${btn.value}`} style={{padding : padding}}>{btn.name}</label>
           </div>
         ))}
       </div>
