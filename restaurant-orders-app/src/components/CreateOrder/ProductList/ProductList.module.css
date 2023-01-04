@@ -40,3 +40,24 @@
   margin: 10px;
   background: yellow;
 }
+
+.errorMessage {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  color: #df0000;
+}
+
+.message {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  color: #c0c0be;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}

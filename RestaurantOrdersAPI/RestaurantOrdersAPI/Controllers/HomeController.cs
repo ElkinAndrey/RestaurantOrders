@@ -26,7 +26,7 @@ namespace RestaurantOrdersAPI.Controllers
         [Route("/")]
         public string[] Get()
         {
-            Thread.Sleep(1000); // Таймер, имитация работы сервера
+            Thread.Sleep(2000); // Таймер, имитация работы сервера
             return new string[] { "Hello world", "Hello world 2" };
         }
 
@@ -55,8 +55,11 @@ namespace RestaurantOrdersAPI.Controllers
         /// <returns>JSON по адресу api/products</returns>
         [HttpGet]
         [Route("products")]
-        public IEnumerable<Product> Products() => 
-            restaurantRepository.Products;
+        public IEnumerable<Product> Products()
+        {
+            Thread.Sleep(2000); // Таймер, имитация работы сервера
+            return restaurantRepository.Products;
+        }
 
         /// <summary>
         /// Добавить новый закак

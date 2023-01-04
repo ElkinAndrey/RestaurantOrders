@@ -2,56 +2,59 @@ import React from "react";
 import classes from "./ProductList.module.css";
 import Product from "./Product/Product";
 import InputSearch from "./../../UI/InputSearch/InputSearch";
+import Loader from "./../../UI/Loader/Loader";
 
-const ProductList = () => {
-  let products = [
-    {
-      productId: 1,
-      productName: "Шаурма",
-      productPrice: 220,
-    },
-    {
-      productId: 2,
-      productName: "Курица гриль",
-      productPrice: 151.33,
-    },
-    {
-      productId: 3,
-      productName: "Шашлык из говядины",
-      productPrice: 310,
-    },
-  ];
-
+const ProductList = ({
+  products,
+  setProducts,
+  isProductsLoading,
+  productsError,
+}) => {
   return (
     <div className={classes.body}>
-      <InputSearch
-        id="SearchProduct"
-        background="#ffffff"
-        readOnly={false}
-        style={{ color: "#000000" }}
-        margin="0px 0px 5px 0px"
-        width="100%"
-        placeholder="Найти товар"
-      />
-      <div className={classes.products}>
-        <div>
-          {products.map((product) => (
-            <div key={product.productId}>
-              <Product
-                productName={product.productName}
-                productPrice={product.productPrice}
-              />
-            </div>
-          ))}{products.map((product) => (
-            <div key={product.productId}>
-              <Product
-                productName={product.productName}
-                productPrice={product.productPrice}
-              />
-            </div>
-          ))}
+      {/* Ошибка */}
+      {productsError ? (
+        <div className={classes.errorMessage}>
+          Не удалось получить
+          <br /> доступ к серверу
         </div>
-      </div>
+      ) : (
+        <div>
+          {/* Загрузка */}
+          {isProductsLoading ? (
+            <div className={classes.loading}>
+              <Loader />
+            </div>
+          ) : (
+            <div>
+              <InputSearch
+                id="SearchProduct"
+                background="#ffffff"
+                readOnly={productsError || isProductsLoading}
+                style={{ color: "#000000" }}
+                margin="0px 0px 5px 0px"
+                width="100%"
+                placeholder="Найти товар"
+              />
+              {/* Данные */}
+              {products.length !== 0 ? (
+                <div className={classes.products}>
+                  {products.map((product) => (
+                    <div key={product.productId}>
+                      <Product
+                        productName={product.productName}
+                        productPrice={product.productPrice}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className={classes.message}>Товары отсутствуют</div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

@@ -17,6 +17,7 @@ namespace RestaurantOrdersAPI.Models
             new Product { ProductId = 1, ProductName = "Шаурма", ProductPrice = 220m },
             new Product { ProductId = 2, ProductName = "Курица гриль", ProductPrice = 151.33m },
             new Product { ProductId = 3, ProductName = "Шашлык из говядины", ProductPrice = 310m },
+            new Product { ProductId = 4, ProductName = "Чак чак", ProductPrice = 1000000m },
         };
 
         /// <summary>

@@ -20,6 +20,9 @@ const InputSearch = ({
       .includes(document.getElementById(`${id}-myInput_input`));
     let input = document.getElementById(`${id}-myInput`);
 
+    if (input === null) {
+      return;
+    }
     if (!withinBoundaries) {
       input.classList.remove(classes.input__active);
       return;
