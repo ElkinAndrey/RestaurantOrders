@@ -6,7 +6,7 @@ import ProductList from "../components/CreateOrder/ProductList/ProductList";
 const CreateOrder = () => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <div style={{ background: "red", display: "inline-block" }}>
+      <div style={{ display: "inline-block" }}>
         <OrderCharacteristics />
         <div
           style={{
