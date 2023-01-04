@@ -44,6 +44,7 @@ const InputSearch = ({
         style={{ background: background, ...style }}
         {...props}
         readOnly={readOnly}
+        spellcheck="false"
       />
       <div id={`${id}-myInput_icon`} className={classes.icon}>
         <img
