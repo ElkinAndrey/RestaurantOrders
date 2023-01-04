@@ -5,6 +5,7 @@
     border: 0px;
     border-radius: 3px;
     background: #ffc600;
+    user-select: none;
 }
 
 .button:active {
