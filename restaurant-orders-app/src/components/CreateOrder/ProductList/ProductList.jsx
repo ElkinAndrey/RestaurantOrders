@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./ProductList.module.css";
 import Product from "./Product/Product";
+import InputSearch from "./../../UI/InputSearch/InputSearch";
 
 const ProductList = () => {
   let products = [
@@ -23,7 +24,15 @@ const ProductList = () => {
 
   return (
     <div className={classes.body}>
-      <div className={classes.search}></div>
+      <InputSearch
+        id="SearchProduct"
+        background="#ffffff"
+        readOnly={false}
+        style={{ color: "#000000" }}
+        margin="0px"
+        width="100%"
+        placeholder="Найти товар"
+      />
       <div className={classes.products}>
         <div>
           {products.map((product) => (

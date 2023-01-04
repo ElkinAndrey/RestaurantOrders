@@ -1,6 +1,6 @@
 .body {
-  width: 47%; 
-  height: 350px;
+  width: 47%;
+  min-width: 350px;
   margin: 0px 12px 20px 12px;
 }
 
