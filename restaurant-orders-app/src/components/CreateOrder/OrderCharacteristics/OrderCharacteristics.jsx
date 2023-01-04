@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputWithIcon from "../../UI/InputWithIcon/InputWithIcon";
 import Select from "../../UI/Select/Select";
-import classes from "./OrderCharacteristics.module.css"
+import classes from "./OrderCharacteristics.module.css";
 
 const OrderCharacteristics = () => {
   let [numder, setNumber] = useState(12432);

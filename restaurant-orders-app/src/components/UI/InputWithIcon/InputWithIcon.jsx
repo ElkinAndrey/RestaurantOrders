@@ -8,8 +8,8 @@ const InputWithIcon = ({
   labelSize = "12px",
   background = "#ffffff",
   readOnly = false,
-  style={},
-  margin="0px",
+  style = {},
+  margin = "0px",
   ...props
 }) => {
   document.addEventListener("mousedown", (e) => {
