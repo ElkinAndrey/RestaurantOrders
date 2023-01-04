@@ -3,6 +3,8 @@ import classes from "./InputWithIcon.module.css";
 
 const InputWithIcon = ({
   id,
+  value,
+  onChange,
   label = "",
   icon = "",
   labelSize = "12px",
@@ -61,6 +63,8 @@ const InputWithIcon = ({
         {icon}
       </div>
       <input
+        value={value}
+        onChange={onChange}
         id={`${id}-myInput_input`}
         style={{ background: background, ...style }}
         {...props}

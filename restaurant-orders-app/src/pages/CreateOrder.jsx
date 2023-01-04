@@ -15,6 +15,14 @@ const CreateOrder = () => {
     products: [],
   });
 
+  const [fetchNumber, isNumberLoading, numberError] = useFetching(async () => {
+    const response = await Service.getNumber();
+    setNewOrder({ ...newOrder, number: `${response.data}` });
+  });
+  useEffect(() => {
+    fetchNumber();
+  }, []);
+
   const [fetchProducts, isProductsLoading, productsError] = useFetching(
     async () => {
       const response = await Service.getProducts();
@@ -28,7 +36,7 @@ const CreateOrder = () => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div style={{ display: "inline-block" }}>
-        <OrderCharacteristics />
+        <OrderCharacteristics newOrder={newOrder} setNewOrder={setNewOrder} />
         <div
           style={{
             display: "flex",

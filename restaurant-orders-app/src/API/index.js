@@ -7,4 +7,9 @@ export default class Service {
     const response = await axios.get(`${URL}/products/`);
     return response;
   }
+
+  static async getNumber() {
+    const response = await axios.get(`${URL}/nextnumber/`);
+    return response;
+  }
 }

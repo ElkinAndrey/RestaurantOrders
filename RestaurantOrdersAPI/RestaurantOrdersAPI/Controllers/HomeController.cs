@@ -80,8 +80,11 @@ namespace RestaurantOrdersAPI.Controllers
         /// <returns>Строка по адресу api/nextnumber</returns>
         [HttpGet]
         [Route("nextnumber")]
-        public string NextNumber() =>
-            restaurantRepository.NextNumber;
+        public string NextNumber()
+        {
+            Thread.Sleep(2000); // Таймер, имитация работы сервера
+            return restaurantRepository.NextNumber;
+        }
 
         /// <summary>
         /// Удалить заказ
