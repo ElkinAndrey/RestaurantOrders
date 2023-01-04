@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Select.module.css";
 
-const Select = ({ value, onChange, options, startName }) => {
+const Select = ({ value, onChange, options, startName, margin = "0px" }) => {
   function selectToggle() {
     document
       .getElementsByClassName(classes.select)
@@ -23,7 +23,7 @@ const Select = ({ value, onChange, options, startName }) => {
   document.addEventListener("click", (e) => {
     const div = document.getElementsByClassName(classes.select).item(0);
     if (div === null) {
-      return; 
+      return;
     }
     const withinBoundaries = e.composedPath().includes(div);
     let selectHeader = document
@@ -47,7 +47,7 @@ const Select = ({ value, onChange, options, startName }) => {
 
   return (
     <div>
-      <div className={classes.select}>
+      <div className={classes.select} style={{ margin: margin }}>
         <div className={classes.select__label}>Способ оплаты</div>
         <div className={classes.select__header} onClick={selectToggle}>
           <span className={classes.select__current}>{startName}</span>
