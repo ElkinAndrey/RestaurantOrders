@@ -24,7 +24,7 @@
 
 /* ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
-  background-color: #000000;
+  background-color: #e1e1e1;
   border-radius: 5px;
 }
 

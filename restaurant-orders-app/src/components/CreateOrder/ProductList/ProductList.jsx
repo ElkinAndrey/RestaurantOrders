@@ -29,13 +29,20 @@ const ProductList = () => {
         background="#ffffff"
         readOnly={false}
         style={{ color: "#000000" }}
-        margin="0px"
+        margin="0px 0px 5px 0px"
         width="100%"
         placeholder="Найти товар"
       />
       <div className={classes.products}>
         <div>
           {products.map((product) => (
+            <div key={product.productId}>
+              <Product
+                productName={product.productName}
+                productPrice={product.productPrice}
+              />
+            </div>
+          ))}{products.map((product) => (
             <div key={product.productId}>
               <Product
                 productName={product.productName}

@@ -16,6 +16,25 @@
   overflow-y: auto;
 }
 
+/* полоса прокрутки (скроллбар) */
+.products::-webkit-scrollbar {
+  width: 20px; /* ширина для вертикального скролла */
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+}
+
+/* ползунок скроллбара */
+.products::-webkit-scrollbar-thumb {
+  background-color: #e1e1e1;
+  border-radius: 10px;
+  border: 5px solid #ffffff;
+  margin-block: 10px;
+}
+
+.products::-webkit-scrollbar-track {
+  margin-block: 10px;
+}
+
 .product {
   height: 80px;
   margin: 10px;
