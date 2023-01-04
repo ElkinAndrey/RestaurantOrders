@@ -21,12 +21,9 @@ const CreateOrder = () => {
       setProducts(response.data);
     }
   );
-
   useEffect(() => {
     fetchProducts();
   }, []);
-
-  console.log(products);
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>

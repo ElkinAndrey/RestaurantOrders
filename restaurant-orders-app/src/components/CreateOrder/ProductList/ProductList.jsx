@@ -1,8 +1,18 @@
-import React from "react";
+import { React, useMemo, useState } from "react";
 import classes from "./ProductList.module.css";
 import Product from "./Product/Product";
 import InputSearch from "./../../UI/InputSearch/InputSearch";
 import Loader from "./../../UI/Loader/Loader";
+
+const search = (searchQuery, products) => {
+  if (!searchQuery) {
+    return products;
+  }
+
+  return [...products].filter((product) =>
+    product.productName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+};
 
 const ProductList = ({
   products,
@@ -10,6 +20,12 @@ const ProductList = ({
   isProductsLoading,
   productsError,
 }) => {
+  let [searchQuery, setSearchQuery] = useState("");
+
+  let searchedProducts = useMemo(() => {
+    return search(searchQuery, products);
+  }, [searchQuery, products]);
+
   return (
     <div className={classes.body}>
       {/* Ошибка */}
@@ -28,6 +44,8 @@ const ProductList = ({
           ) : (
             <div>
               <InputSearch
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 id="SearchProduct"
                 background="#ffffff"
                 readOnly={productsError || isProductsLoading}
@@ -37,9 +55,9 @@ const ProductList = ({
                 placeholder="Найти товар"
               />
               {/* Данные */}
-              {products.length !== 0 ? (
+              {searchedProducts.length !== 0 ? (
                 <div className={classes.products}>
-                  {products.map((product) => (
+                  {searchedProducts.map((product) => (
                     <div key={product.productId}>
                       <Product
                         productName={product.productName}

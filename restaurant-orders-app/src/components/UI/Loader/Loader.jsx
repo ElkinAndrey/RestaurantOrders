@@ -1,9 +1,9 @@
 import React from 'react'
 import classes from "./Loader.module.css";
 
-const Loader = (props) => {
+const Loader = ({...props}) => {
   return (    
-    <div props class={classes.spinner}></div>
+    <div {...props} className={classes.spinner}></div>
   )
 }
 
