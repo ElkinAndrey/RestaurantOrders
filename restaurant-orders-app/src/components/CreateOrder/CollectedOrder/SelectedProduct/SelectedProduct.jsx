@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import Counter from "../../../UI/Counter/Counter";
 import classes from "./SelectedProduct.module.css";
 
-const SelectedProduct = ({ product, setQuantity, ...props }) => {
+const SelectedProduct = ({ product, setQuantity, delProductInOrder, ...props }) => {
   return (
     <div className={classes.body}>
       <div className={classes.information}>
@@ -18,7 +18,7 @@ const SelectedProduct = ({ product, setQuantity, ...props }) => {
           </div>
         </div>
       </div>
-      <div className={classes.images}>
+      <div className={classes.images} onClick={() => delProductInOrder(product)}>
         <button className={classes.image}>
           <img
             src="./assets/img/trash.png"

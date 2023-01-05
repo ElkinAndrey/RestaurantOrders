@@ -34,6 +34,14 @@ const CreateOrder = () => {
     fetchProducts();
   }, []);
 
+  const delProductInOrder = (product) => {
+    setNewOrder({
+      ...newOrder,
+      products: [...newOrder.products.filter((p) => p.product.productId !== product.product.productId)],
+    });
+    setProducts([...products, product.product]);
+  };
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div style={{ display: "inline-block" }}>
@@ -53,7 +61,7 @@ const CreateOrder = () => {
             newOrder={newOrder}
             setNewOrder={setNewOrder}
           />
-          <CollectedOrder newOrder={newOrder} setNewOrder={setNewOrder} />
+          <CollectedOrder newOrder={newOrder} setNewOrder={setNewOrder} delProductInOrder={delProductInOrder}/>
         </div>
       </div>
     </div>

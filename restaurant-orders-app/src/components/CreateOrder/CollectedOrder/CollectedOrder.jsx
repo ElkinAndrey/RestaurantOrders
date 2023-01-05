@@ -3,7 +3,7 @@ import Button from "../../UI/Button/Button";
 import classes from "./CollectedOrder.module.css";
 import SelectedProduct from "./SelectedProduct/SelectedProduct";
 
-const CollectedOrder = ({ newOrder, setNewOrder }) => {
+const CollectedOrder = ({ newOrder, setNewOrder, delProductInOrder }) => {
   const setQuantity = (productId, newQuantity) => {
     setNewOrder({
       ...newOrder,
@@ -30,7 +30,7 @@ const CollectedOrder = ({ newOrder, setNewOrder }) => {
             <div>
               {newOrder.products.map((pr) => (
                 <div key={pr.product.productId}>
-                  <SelectedProduct product={pr} setQuantity={setQuantity} />
+                  <SelectedProduct product={pr} setQuantity={setQuantity} delProductInOrder={delProductInOrder}/>
                 </div>
               ))}
             </div>
