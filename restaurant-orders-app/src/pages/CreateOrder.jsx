@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CollectedOrder from "../components/CreateOrder/CollectedOrder/CollectedOrder";
 import OrderCharacteristics from "../components/CreateOrder/OrderCharacteristics/OrderCharacteristics";
 import ProductList from "../components/CreateOrder/ProductList/ProductList";
@@ -6,6 +6,8 @@ import { useFetching } from "./../hooks/useFetching";
 import Service from "./../API/index";
 
 const CreateOrder = () => {
+  const dataFetchedRef = useRef(false);
+
   let [products, setProducts] = useState([]);
 
   let [newOrder, setNewOrder] = useState({
@@ -19,10 +21,6 @@ const CreateOrder = () => {
     const response = await Service.getNumber();
     setNewOrder({ ...newOrder, number: `${response.data}` });
   });
-  useEffect(() => {
-    fetchNumber();
-  }, []);
-
   const [fetchProducts, isProductsLoading, productsError] = useFetching(
     async () => {
       const response = await Service.getProducts();
@@ -30,6 +28,9 @@ const CreateOrder = () => {
     }
   );
   useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    fetchNumber();
     fetchProducts();
   }, []);
 
