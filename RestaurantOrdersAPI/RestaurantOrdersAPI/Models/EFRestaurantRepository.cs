@@ -1,4 +1,5 @@
-﻿using RestaurantOrdersAPI.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using RestaurantOrdersAPI.Data;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Number = RestaurantOrdersAPI.Data.Number;
 
@@ -38,9 +39,9 @@ namespace RestaurantOrdersAPI.Models
             }
         }
 
-        public List<Order> Orders => throw new NotImplementedException();
+        public List<Order> Orders => context.Orders.Include(o => o.Products).ThenInclude(p => p.Product).ToList();
 
-        public List<Product> Products => throw new NotImplementedException();
+        public List<Product> Products => context.Products.ToList();
 
         public void AddOrder(Order order)
         {
