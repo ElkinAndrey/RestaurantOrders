@@ -11,7 +11,7 @@ namespace RestaurantOrdersAPI.Data
         /// Однозначный ключ
         /// </summary>
         [Key]
-        public int NextNumberId { get; set; }
+        public int? NextNumberId { get; set; }
 
         /// <summary>
         /// Число

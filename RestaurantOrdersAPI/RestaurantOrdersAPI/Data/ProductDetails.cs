@@ -11,7 +11,7 @@ namespace RestaurantOrdersAPI.Data
         /// Id, однозначный ключ
         /// </summary>
         [Key]
-        public int ProductDetailsId { get; set; }
+        public int? ProductDetailsId { get; set; }
 
         /// <summary>
         /// Товар

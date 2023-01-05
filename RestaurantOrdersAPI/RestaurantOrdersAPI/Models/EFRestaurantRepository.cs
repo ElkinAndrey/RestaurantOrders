@@ -45,12 +45,36 @@ namespace RestaurantOrdersAPI.Models
 
         public void AddOrder(Order order)
         {
-            throw new NotImplementedException();
+            List<ProductDetails> products = new List<ProductDetails>();
+            foreach (var product in order.Products)
+            {
+                products.Add(new ProductDetails()
+                {
+                    Quantity = product.Quantity,
+                    Product = context.Products.Find(product.Product.ProductId) ?? new Product(),
+                });
+            }
+            Order newOrder = new Order
+            {
+                Number = order.Number,
+                PaymentMethod = order.PaymentMethod,
+                Products = products,
+            };
+            context.Orders.Add(newOrder);
+            context.SaveChanges();
         }
 
         public void RemoveOrder(int orderId)
         {
-            throw new NotImplementedException();
+            Order order = context.Orders.Where(p => p.OrderId == orderId).Include(e => e.Products).ToList()[0];
+
+            foreach(var product in order.Products)
+            {
+                context.Remove(product);
+            }
+
+            context.Remove(order);
+            context.SaveChanges();
         }
     }
 }
