@@ -22,14 +22,6 @@ namespace RestaurantOrdersAPI.Controllers
             this.restaurantRepository = restaurantRepository;
         }
 
-        [HttpGet]
-        [Route("/")]
-        public string[] Get()
-        {
-            Thread.Sleep(2000); // Таймер, имитация работы сервера
-            return new string[] { "Hello world", "Hello world 2" };
-        }
-
         /// <summary>
         /// Получить список заказов
         /// </summary>
@@ -41,15 +33,6 @@ namespace RestaurantOrdersAPI.Controllers
             Thread.Sleep(2000); // Таймер, имитация работы сервера
             return restaurantRepository.Orders;
         }
-        /// <summary>
-        /// Получить заказ по номеру
-        /// </summary>
-        /// <param name="number">Номер заказа</param>
-        /// <returns>JSON по адресу api/orders/{номер заказа}</returns>
-        [HttpGet]
-        [Route("orders/{number}")]
-        public Order Orders(string number) => 
-            restaurantRepository.GetOrder(number);
 
         /// <summary>
         /// Получить список товаров
@@ -100,26 +83,6 @@ namespace RestaurantOrdersAPI.Controllers
                 return Ok();
             }
             catch(Exception ex)
-            {
-                return NotFound();
-            }
-        }
-
-        /// <summary>
-        /// Обновить заказ
-        /// </summary>
-        /// <param name="order">Обновленный заказ</param>
-        /// <returns></returns>
-        [HttpPatch("order/{number}")]
-        public StatusCodeResult ChangeOrder(string number, [FromBody] Order order)
-        {
-            try
-            {
-                order.Number = number;
-                restaurantRepository.ChangeOrder(order);
-                return Ok();
-            }
-            catch (Exception ex)
             {
                 return NotFound();
             }

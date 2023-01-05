@@ -34,17 +34,6 @@ namespace RestaurantOrdersAPI.Models
         /// </summary>
         /// <param name="orderNumber">Номер удаляемого заказа</param>
         public void RemoveOrder(string orderNumber);
-        
-        /// <summary>
-        /// Изменить заказ
-        /// </summary>
-        /// <param name="order">Изменяемый заказ</param>
-        public void ChangeOrder(Order order);
-
-        /// <summary>
-        /// Получить заказ
-        /// </summary>
-        public Order GetOrder(string orderNumber);
 
     }
 }
