@@ -12,4 +12,8 @@ export default class Service {
     const response = await axios.get(`${URL}/nextnumber/`);
     return response;
   }
+
+  static async addOrder(newOrder) {
+    await axios.post(`${URL}/order/`, newOrder);
+  }
 }

@@ -18,7 +18,7 @@ const CreateOrder = () => {
 
   const [fetchNumber, isNumberLoading, numberError] = useFetching(async () => {
     const response = await Service.getNumber();
-    setNewOrder({ ...newOrder, number: `${response.data}` });
+    setNewOrder({ ...newOrder, products: [], number: `${response.data}` });
   });
   const [fetchProducts, isProductsLoading, productsError] = useFetching(
     async () => {
@@ -53,6 +53,19 @@ const CreateOrder = () => {
     });
   };
 
+  const addNewOrder = () => {
+    if (newOrder.products.length === 0) {
+      return;
+    }
+    if (newOrder.number === "") {
+      return;
+    }
+    Service.addOrder(newOrder);
+    delAllProductInOrder();
+    fetchNumber();
+    setNewOrder({ ...newOrder, products: [], number: "" });    
+  };
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div style={{ display: "inline-block" }}>
@@ -77,6 +90,7 @@ const CreateOrder = () => {
             setNewOrder={setNewOrder}
             delProductInOrder={delProductInOrder}
             delAllProductInOrder={delAllProductInOrder}
+            addNewOrder={addNewOrder}
           />
         </div>
       </div>

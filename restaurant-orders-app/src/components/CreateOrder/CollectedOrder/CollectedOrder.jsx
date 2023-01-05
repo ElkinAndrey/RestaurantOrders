@@ -1,9 +1,16 @@
-import React from "react";
+import { React, useState } from "react";
 import Button from "../../UI/Button/Button";
 import classes from "./CollectedOrder.module.css";
 import SelectedProduct from "./SelectedProduct/SelectedProduct";
+import Service from "./../../../API/index";
 
-const CollectedOrder = ({ newOrder, setNewOrder, delProductInOrder, delAllProductInOrder }) => {
+const CollectedOrder = ({
+  newOrder,
+  setNewOrder,
+  delProductInOrder,
+  delAllProductInOrder,
+  addNewOrder,
+}) => {
   const setQuantity = (productId, newQuantity) => {
     setNewOrder({
       ...newOrder,
@@ -21,8 +28,10 @@ const CollectedOrder = ({ newOrder, setNewOrder, delProductInOrder, delAllProduc
   return (
     <div className={classes.body}>
       <div style={{ marginBottom: "5px" }}>
-        <Button style={{ marginRight: "22px" }}>Создать</Button>
-        <Button onClick={delAllProductInOrder}>Очистить</Button>
+        <Button onClick={() => addNewOrder()} style={{ marginRight: "22px" }}>
+          Создать
+        </Button>
+        <Button onClick={() => delAllProductInOrder()}>Очистить</Button>
       </div>
       <div className={classes.products}>
         <div>
@@ -30,12 +39,18 @@ const CollectedOrder = ({ newOrder, setNewOrder, delProductInOrder, delAllProduc
             <div>
               {newOrder.products.map((pr) => (
                 <div key={pr.product.productId}>
-                  <SelectedProduct product={pr} setQuantity={setQuantity} delProductInOrder={delProductInOrder}/>
+                  <SelectedProduct
+                    product={pr}
+                    setQuantity={setQuantity}
+                    delProductInOrder={delProductInOrder}
+                  />
                 </div>
               ))}
             </div>
           ) : (
-            <div className={classes.message}>Добавьте товары в заказ</div>
+            <div className={classes.message}>
+              Добавьте товары в заказ
+            </div>
           )}
         </div>
       </div>

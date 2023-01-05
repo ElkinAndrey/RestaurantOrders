@@ -38,6 +38,17 @@ const ProductList = ({
 
   return (
     <div className={classes.body}>
+      <InputSearch
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        id="SearchProduct"
+        background="#ffffff"
+        readOnly={productsError || isProductsLoading}
+        style={{ color: "#000000" }}
+        margin="0px 0px 5px 0px"
+        width="100%"
+        placeholder="Найти товар"
+      />
       {/* Ошибка */}
       {productsError ? (
         <div className={classes.errorMessage}>
@@ -53,17 +64,6 @@ const ProductList = ({
             </div>
           ) : (
             <div>
-              <InputSearch
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                id="SearchProduct"
-                background="#ffffff"
-                readOnly={productsError || isProductsLoading}
-                style={{ color: "#000000" }}
-                margin="0px 0px 5px 0px"
-                width="100%"
-                placeholder="Найти товар"
-              />
               {/* Данные */}
               {searchedProducts.length !== 0 ? (
                 <div className={classes.products}>
