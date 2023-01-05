@@ -16,4 +16,9 @@ export default class Service {
   static async addOrder(newOrder) {
     await axios.post(`${URL}/order/`, newOrder);
   }
+
+  static async getOrders() {
+    const response = await axios.get(`${URL}/orders/`);
+    return response;
+  }
 }

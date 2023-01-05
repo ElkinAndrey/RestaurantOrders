@@ -37,7 +37,7 @@ namespace RestaurantOrdersAPI.Models
 
         public void AddOrder(Order order)
         {
-
+            order.OrderId = int.Parse(order.Number);
             FakeDataBase.Orders.Add(order);
             FakeDataBase.ProductsDetails.AddRange(order.Products);
         }

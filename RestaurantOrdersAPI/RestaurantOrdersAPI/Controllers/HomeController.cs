@@ -36,7 +36,7 @@ namespace RestaurantOrdersAPI.Controllers
         /// <returns>JSON по адресу api/orders</returns>
         [HttpGet]
         [Route("orders")]
-        public async Task<ActionResult<IEnumerable<Order>>> Orders() => 
+        public IEnumerable<Order> Orders() => 
             restaurantRepository.Orders;
 
         /// <summary>
