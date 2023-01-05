@@ -21,7 +21,10 @@ const OrderCharacteristics = ({newOrder, setNewOrder}) => {
       />
       <InputWithIcon
         id="2"
-        value={newOrder.totalPrice}
+        value={newOrder.products.reduce(
+          (accumulator, currentValue) => accumulator + currentValue.product.productPrice * currentValue.quantity,
+          0
+        ).toFixed(2)}
         onChange={(e) => setNewOrder({...newOrder, price: e.target.value})}
         style={{ color: "#c0c0be" }}
         icon="₽"

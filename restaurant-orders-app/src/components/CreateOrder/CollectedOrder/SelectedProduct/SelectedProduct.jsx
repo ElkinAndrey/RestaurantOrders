@@ -14,7 +14,7 @@ const SelectedProduct = ({ product, setQuantity, delProductInOrder, ...props }) 
               onChange={(e) => {setQuantity(product.product.productId, e)}}
               style={{marginRight: "10px"}}
             />
-            <div>{product.product.productPrice * product.quantity}</div>
+            <div>{(product.product.productPrice * product.quantity).toFixed(2)}</div>
           </div>
         </div>
       </div>

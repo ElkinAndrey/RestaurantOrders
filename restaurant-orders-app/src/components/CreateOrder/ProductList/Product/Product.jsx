@@ -7,7 +7,7 @@ const Product = ({ product, addProductInOrder, ...props }) => {
       <div className={classes.information}>
         <div>
           <div style={{ marginBottom: "5px" }}>{product.productName}</div>
-          <div>{product.productPrice}</div>
+          <div>{product.productPrice.toFixed(2)}</div>
         </div>
       </div>
       <div className={classes.images} onClick={() => addProductInOrder(product)}>
