@@ -12,7 +12,7 @@ using RestaurantOrdersAPI.Models;
 namespace RestaurantOrdersAPI.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    [Migration("20230105184734_RestaurantMigrations")]
+    [Migration("20230105191808_RestaurantMigrations")]
     partial class RestaurantMigrations
     {
         /// <inheritdoc />
@@ -27,10 +27,16 @@ namespace RestaurantOrdersAPI.Migrations
 
             modelBuilder.Entity("RestaurantOrdersAPI.Data.Number", b =>
                 {
-                    b.Property<string>("NextNumber")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("NextNumberId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.HasKey("NextNumber");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NextNumberId"));
+
+                    b.Property<string>("NextNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("NextNumberId");
 
                     b.ToTable("NextNumber");
                 });

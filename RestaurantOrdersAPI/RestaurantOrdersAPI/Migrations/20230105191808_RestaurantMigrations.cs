@@ -14,11 +14,13 @@ namespace RestaurantOrdersAPI.Migrations
                 name: "NextNumber",
                 columns: table => new
                 {
-                    NextNumber = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    NextNumberId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NextNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NextNumber", x => x.NextNumber);
+                    table.PrimaryKey("PK_NextNumber", x => x.NextNumberId);
                 });
 
             migrationBuilder.CreateTable(

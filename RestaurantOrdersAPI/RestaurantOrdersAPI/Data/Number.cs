@@ -8,9 +8,14 @@ namespace RestaurantOrdersAPI.Data
     public class Number
     {
         /// <summary>
-        /// Число
+        /// Однозначный ключ
         /// </summary>
         [Key]
+        public int NextNumberId { get; set; }
+
+        /// <summary>
+        /// Число
+        /// </summary>
         public string? NextNumber { get; set; }
     }
 }

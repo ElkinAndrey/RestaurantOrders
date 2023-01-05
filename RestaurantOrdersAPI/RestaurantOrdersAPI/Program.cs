@@ -9,7 +9,7 @@ builder.Services.AddDbContext<RestaurantDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-builder.Services.AddTransient<IRestaurantRepository, FakeRestaurantRepository>();
+builder.Services.AddTransient<IRestaurantRepository, EFRestaurantRepository>();
 /*builder.Services.AddEndpointsApiExplorer();*/
 
 
