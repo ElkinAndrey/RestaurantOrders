@@ -74,12 +74,12 @@ namespace RestaurantOrdersAPI.Controllers
         /// <summary>
         /// Удалить заказ
         /// </summary>
-        /// <param name="number">Номер удаляемого заказа</param>
-        [HttpDelete("order/{number}")]
-        public StatusCodeResult RemoveOrder(string number) {
+        /// <param name="id">Номер удаляемого заказа</param>
+        [HttpDelete("order/{id}")]
+        public StatusCodeResult RemoveOrder(int id) {
             try
             {
-                restaurantRepository.RemoveOrder(number);
+                restaurantRepository.RemoveOrder(id);
                 return Ok();
             }
             catch(Exception ex)

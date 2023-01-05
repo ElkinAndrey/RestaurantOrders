@@ -42,16 +42,16 @@ namespace RestaurantOrdersAPI.Models
             FakeDataBase.ProductsDetails.AddRange(order.Products);
         }
 
-        public void RemoveOrder(string orderNumber)
+        public void RemoveOrder(int orderId)
         {
-            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.Number == orderNumber);
+            Order? oldOrder = FakeDataBase.Orders.FirstOrDefault(o => o.OrderId == orderId);
 
             if (oldOrder == null)
                 throw new Exception("Заказ не найден");
 
             foreach (var item in oldOrder.Products) // Удаление товаров внутри заказа
                 FakeDataBase.ProductsDetails.RemoveAll(p => p.ProductDetailsId == item.ProductDetailsId);
-            FakeDataBase.Orders.RemoveAll(o => o.Number == orderNumber); // Удаление заказа
+            FakeDataBase.Orders.RemoveAll(o => o.OrderId == orderId); // Удаление заказа
         }
 
         ~FakeRestaurantRepository()

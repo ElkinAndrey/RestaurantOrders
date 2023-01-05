@@ -10,7 +10,6 @@ export default class Service {
 
   static async getNumber() {
     const response = await axios.get(`${URL}/nextnumber/`);
-    console.log(typeof response.data)
     return response;
   }
 
