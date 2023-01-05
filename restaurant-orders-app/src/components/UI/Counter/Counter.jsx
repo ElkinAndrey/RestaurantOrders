@@ -26,7 +26,7 @@ const Counter = ({ value, onChange, ...props }) => {
       <div style={{ display: "flex" }}>
         <div
           className={classes.body}
-          style={{ outline: value === 0 ? "1px solid #df0000" : "0px" }}
+          style={{ outline: value === 0 ? "2px solid #df0000" : "0px" }}
         >
           <button onClick={() => validate(value === 1 ? value : value - 1)}>
             -

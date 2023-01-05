@@ -26,13 +26,26 @@ const CollectedOrder = ({
     });
   };
 
+  const thereIsProductWithZero = () => {
+    for (const product of newOrder.products) {
+      if (product.quantity === 0) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   return (
     <div className={classes.body}>
       <div style={{ marginBottom: "5px" }}>
         <Button
           onClick={() => addNewOrder()}
           style={{ marginRight: "22px" }}
-          disabled={newOrder.products.length === 0 || number === ""}
+          disabled={
+            newOrder.products.length === 0 ||
+            number === "" ||
+            thereIsProductWithZero()
+          }
         >
           Создать
         </Button>
