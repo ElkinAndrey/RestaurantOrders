@@ -1,11 +1,15 @@
 using RestaurantOrdersAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<IRestaurantRepository, FakeRestaurantRepository>();
+builder.Services.AddDbContext<RestaurantDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
+builder.Services.AddTransient<IRestaurantRepository, FakeRestaurantRepository>();
 /*builder.Services.AddEndpointsApiExplorer();*/
 
 
