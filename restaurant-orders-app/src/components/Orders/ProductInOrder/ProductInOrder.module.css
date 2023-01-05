@@ -1,0 +1,19 @@
+.body {
+    display: flex;
+    width: 100%;
+}
+
+.name{
+    width: 60%;
+    text-align: left;
+}
+
+.quantity {
+    width: 15%;
+    text-align: right;
+}
+
+.price {
+    width: 25%;
+    text-align: right;
+}

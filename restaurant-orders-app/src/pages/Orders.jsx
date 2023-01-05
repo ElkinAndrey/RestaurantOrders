@@ -1,6 +1,7 @@
 import { React, useState, useEffect, useRef } from "react";
 import { useFetching } from "./../hooks/useFetching";
 import Service from "./../API/index";
+import Order from "./../components/Orders/Order/Order";
 
 const Orders = () => {
   const dataFetchedRef = useRef(false);
@@ -18,26 +19,14 @@ const Orders = () => {
   }, []);
 
   return (
-    <div>
-      {orders.map((order) => (
-        <div
-          key={order.orderId}
-          style={{ border: "3px red solid", margin: "10px", padding: "10px" }}
-        >
-          <div>{order.number}</div>
-          <div>{order.paymentMethod}</div>
-          {order.products.map((product) => (
-            <div
-              key={product.product.productId}
-              style={{ border: "3px green solid", margin: "5px" }}
-            >
-              <div>{product.product.productName}</div>
-              <div>{product.product.productPrice}</div>
-              <div>{product.quantity}</div>
-            </div>
-          ))}
-        </div>
-      ))}
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "inline-block" }}>
+        {orders.map((order) => (
+          <div key={order.orderId}>
+            <Order order={order} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
