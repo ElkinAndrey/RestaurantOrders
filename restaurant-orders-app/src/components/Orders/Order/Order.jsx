@@ -3,19 +3,14 @@ import classes from "./Order.module.css";
 import { ProductInOrder } from "./../ProductInOrder/ProductInOrder";
 import Service from "./../../../API/index";
 
-const Order = ({ order }) => {
-  const del = (b) => {
-    Service.delOrder(order.orderId);
-    b.target.parentElement.parentElement.classList.add(classes.delBody);
-  };
-
+const Order = ({ order, del }) => {
   return (
     <div className={classes.body}>
       <div className={classes.head}>
         <div className={classes.title} style={{ float: "left" }}>
           <label>Номер заказа</label> {order.number}
         </div>
-        <button onClick={(e) => del(e)} className={classes.del}>
+        <button onClick={() => del(order)} className={classes.del}>
           <img
             src="./assets/img/trash.png"
             alt={"123"}
