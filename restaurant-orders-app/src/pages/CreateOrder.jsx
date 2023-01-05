@@ -37,9 +37,21 @@ const CreateOrder = () => {
   const delProductInOrder = (product) => {
     setNewOrder({
       ...newOrder,
-      products: [...newOrder.products.filter((p) => p.product.productId !== product.product.productId)],
+      products: [
+        ...newOrder.products.filter(
+          (p) => p.product.productId !== product.product.productId
+        ),
+      ],
     });
     setProducts([...products, product.product]);
+  };
+
+  const delAllProductInOrder = () => {
+    setProducts([...products, ...newOrder.products.map((p) => p.product)]);
+    setNewOrder({
+      ...newOrder,
+      products: [],
+    });
   };
 
   return (
@@ -61,7 +73,12 @@ const CreateOrder = () => {
             newOrder={newOrder}
             setNewOrder={setNewOrder}
           />
-          <CollectedOrder newOrder={newOrder} setNewOrder={setNewOrder} delProductInOrder={delProductInOrder}/>
+          <CollectedOrder
+            newOrder={newOrder}
+            setNewOrder={setNewOrder}
+            delProductInOrder={delProductInOrder}
+            delAllProductInOrder={delAllProductInOrder}
+          />
         </div>
       </div>
     </div>

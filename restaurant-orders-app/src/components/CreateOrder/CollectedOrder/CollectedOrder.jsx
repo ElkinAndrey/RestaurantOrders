@@ -3,7 +3,7 @@ import Button from "../../UI/Button/Button";
 import classes from "./CollectedOrder.module.css";
 import SelectedProduct from "./SelectedProduct/SelectedProduct";
 
-const CollectedOrder = ({ newOrder, setNewOrder, delProductInOrder }) => {
+const CollectedOrder = ({ newOrder, setNewOrder, delProductInOrder, delAllProductInOrder }) => {
   const setQuantity = (productId, newQuantity) => {
     setNewOrder({
       ...newOrder,
@@ -22,7 +22,7 @@ const CollectedOrder = ({ newOrder, setNewOrder, delProductInOrder }) => {
     <div className={classes.body}>
       <div style={{ marginBottom: "5px" }}>
         <Button style={{ marginRight: "22px" }}>Создать</Button>
-        <Button>Очистить</Button>
+        <Button onClick={delAllProductInOrder}>Очистить</Button>
       </div>
       <div className={classes.products}>
         <div>
