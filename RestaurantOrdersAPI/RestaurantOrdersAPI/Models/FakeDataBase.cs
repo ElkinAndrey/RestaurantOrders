@@ -42,7 +42,6 @@ namespace RestaurantOrdersAPI.Models
                 OrderId = 1, 
                 Number = "1",
                 PaymentMethod = "Наличные",
-                TotalPrice = ProductsDetails[0].Product.ProductPrice + ProductsDetails[1].Product.ProductPrice,
                 Products = new List<ProductDetails> { ProductsDetails[0], ProductsDetails[1] },      
             },
             new Order
@@ -50,7 +49,6 @@ namespace RestaurantOrdersAPI.Models
                 OrderId = 2,
                 Number = "2",
                 PaymentMethod = "В рассрочку",
-                TotalPrice = ProductsDetails[2].Product.ProductPrice + ProductsDetails[3].Product.ProductPrice,
                 Products = new List<ProductDetails> { ProductsDetails[2], ProductsDetails[3] },
             },
             new Order
@@ -58,7 +56,6 @@ namespace RestaurantOrdersAPI.Models
                 OrderId = 3,
                 Number = "3",
                 PaymentMethod = "В рассрочку",
-                TotalPrice = ProductsDetails[4].Product.ProductPrice,
                 Products = new List<ProductDetails> { ProductsDetails[4] },
             },
         };

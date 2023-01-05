@@ -19,11 +19,6 @@ namespace RestaurantOrdersAPI.Data
         public string Number { get; set; }
 
         /// <summary>
-        /// Полная стоимость заказа
-        /// </summary>
-        public decimal TotalPrice { get; set; }
-
-        /// <summary>
         /// Способ оплаты
         /// </summary>
         public string? PaymentMethod { get; set; }

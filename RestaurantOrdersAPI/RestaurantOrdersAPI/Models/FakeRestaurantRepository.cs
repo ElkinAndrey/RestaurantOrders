@@ -50,7 +50,6 @@ namespace RestaurantOrdersAPI.Models
                 throw new Exception("Заказ не найден");
 
             oldOrder.PaymentMethod = order.PaymentMethod;
-            oldOrder.TotalPrice = order.TotalPrice;
 
             foreach (var item in oldOrder.Products) // Удаление старых товаров
                 FakeDataBase.ProductsDetails.RemoveAll(p => p.ProductDetailsId == item.ProductDetailsId);
