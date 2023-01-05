@@ -9,16 +9,16 @@ const CreateOrder = () => {
   const dataFetchedRef = useRef(false);
 
   let [products, setProducts] = useState([]);
+  let [number, setNumber] = useState("");
 
   let [newOrder, setNewOrder] = useState({
-    number: "",
     paymentMethod: "Наличные",
     products: [],
   });
 
   const [fetchNumber, isNumberLoading, numberError] = useFetching(async () => {
     const response = await Service.getNumber();
-    setNewOrder({ ...newOrder, products: [], number: `${response.data}` });
+    setNumber(`${response.data}`);
   });
   const [fetchProducts, isProductsLoading, productsError] = useFetching(
     async () => {
@@ -57,19 +57,24 @@ const CreateOrder = () => {
     if (newOrder.products.length === 0) {
       return;
     }
-    if (newOrder.number === "") {
+    if (number === "") {
       return;
     }
-    Service.addOrder(newOrder);
+    Service.addOrder({ number: number, ...newOrder });
     delAllProductInOrder();
+    setNumber("");
     fetchNumber();
-    setNewOrder({ ...newOrder, products: [], number: "" });    
   };
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div style={{ display: "inline-block" }}>
-        <OrderCharacteristics newOrder={newOrder} setNewOrder={setNewOrder} />
+        <OrderCharacteristics
+          newOrder={newOrder}
+          setNewOrder={setNewOrder}
+          number={number}
+          setNumber={setNumber}
+        />
         <div
           style={{
             display: "flex",

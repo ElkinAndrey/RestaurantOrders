@@ -3,13 +3,13 @@ import InputWithIcon from "../../UI/InputWithIcon/InputWithIcon";
 import Select from "../../UI/Select/Select";
 import classes from "./OrderCharacteristics.module.css";
 
-const OrderCharacteristics = ({newOrder, setNewOrder}) => {
+const OrderCharacteristics = ({newOrder, setNewOrder, number, setNumber}) => {
   return (
     <div className={classes.body}>
       <InputWithIcon
         id="1"
-        value={newOrder.number}
-        onChange={(e) => setNewOrder({...newOrder, number: e.target.value})}
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}
         style={{ color: "#c0c0be" }}
         icon="№"
         label="Способ оплаты"
