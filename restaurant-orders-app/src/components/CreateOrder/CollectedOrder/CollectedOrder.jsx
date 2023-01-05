@@ -10,6 +10,7 @@ const CollectedOrder = ({
   delProductInOrder,
   delAllProductInOrder,
   addNewOrder,
+  number,
 }) => {
   const setQuantity = (productId, newQuantity) => {
     setNewOrder({
@@ -28,10 +29,19 @@ const CollectedOrder = ({
   return (
     <div className={classes.body}>
       <div style={{ marginBottom: "5px" }}>
-        <Button onClick={() => addNewOrder()} style={{ marginRight: "22px" }}>
+        <Button
+          onClick={() => addNewOrder()}
+          style={{ marginRight: "22px" }}
+          disabled={newOrder.products.length === 0 || number === ""}
+        >
           Создать
         </Button>
-        <Button onClick={() => delAllProductInOrder()}>Очистить</Button>
+        <Button
+          onClick={() => delAllProductInOrder()}
+          disabled={newOrder.products.length === 0}
+        >
+          Очистить
+        </Button>
       </div>
       <div className={classes.products}>
         <div>
@@ -48,9 +58,7 @@ const CollectedOrder = ({
               ))}
             </div>
           ) : (
-            <div className={classes.message}>
-              Добавьте товары в заказ
-            </div>
+            <div className={classes.message}>Добавьте товары в заказ</div>
           )}
         </div>
       </div>

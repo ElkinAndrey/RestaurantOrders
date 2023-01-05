@@ -96,6 +96,7 @@ const CreateOrder = () => {
             delProductInOrder={delProductInOrder}
             delAllProductInOrder={delAllProductInOrder}
             addNewOrder={addNewOrder}
+            number={number}
           />
         </div>
       </div>
