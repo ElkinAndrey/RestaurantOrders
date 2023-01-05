@@ -21,4 +21,8 @@ export default class Service {
     const response = await axios.get(`${URL}/orders/`);
     return response;
   }
+
+  static async delOrder(id) {
+    await axios.delete(`${URL}/order/${id}/`);
+  }
 }

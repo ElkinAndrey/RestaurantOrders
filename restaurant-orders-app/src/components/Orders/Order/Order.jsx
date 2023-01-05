@@ -1,12 +1,27 @@
 import React from "react";
 import classes from "./Order.module.css";
 import { ProductInOrder } from "./../ProductInOrder/ProductInOrder";
+import Service from "./../../../API/index";
 
 const Order = ({ order }) => {
+  const del = (b) => {
+    Service.delOrder(order.orderId);
+    b.target.parentElement.parentElement.classList.add(classes.delBody);
+  };
+
   return (
     <div className={classes.body}>
-      <div className={classes.title}>
-        <label>Номер заказа</label> {order.number}
+      <div className={classes.head}>
+        <div className={classes.title} style={{ float: "left" }}>
+          <label>Номер заказа</label> {order.number}
+        </div>
+        <button onClick={(e) => del(e)} className={classes.del}>
+          <img
+            src="./assets/img/trash.png"
+            alt={"123"}
+            style={{ height: "20px", width: "20px", pointerEvents: "none" }}
+          />
+        </button>
       </div>
       <div className={classes.line}></div>
       <div className={classes.products}>
@@ -17,7 +32,7 @@ const Order = ({ order }) => {
         ))}
       </div>
       <div className={classes.line}></div>
-      <div className={classes.title} style={{marginBottom: "5px"}}>
+      <div className={classes.title} style={{ marginBottom: "5px" }}>
         <label>Способ оплаты</label> {order.paymentMethod}
       </div>
       <div className={classes.title}>

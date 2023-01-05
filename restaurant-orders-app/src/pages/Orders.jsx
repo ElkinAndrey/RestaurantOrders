@@ -23,7 +23,7 @@ const Orders = () => {
       <div style={{ display: "inline-block" }}>
         {orders.map((order) => (
           <div key={order.orderId}>
-            <Order order={order} />
+            <Order order={order}/>
           </div>
         ))}
       </div>
