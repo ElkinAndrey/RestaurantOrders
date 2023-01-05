@@ -26,3 +26,10 @@
   margin: 10px;
   background: yellow;
 }
+
+.message {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  color: #c0c0be;
+}

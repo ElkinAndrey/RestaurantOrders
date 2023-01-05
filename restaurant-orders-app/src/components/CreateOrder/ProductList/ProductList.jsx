@@ -19,12 +19,22 @@ const ProductList = ({
   setProducts,
   isProductsLoading,
   productsError,
+  newOrder,
+  setNewOrder,
 }) => {
   let [searchQuery, setSearchQuery] = useState("");
 
   let searchedProducts = useMemo(() => {
     return search(searchQuery, products);
   }, [searchQuery, products]);
+
+  const addProductInOrder = (product) => {
+    setNewOrder({
+      ...newOrder,
+      products: [...newOrder.products, { product: product, quantity: 1 }],
+    });
+    setProducts(products.filter((p) => p.productId !== product.productId));
+  };
 
   return (
     <div className={classes.body}>
@@ -60,8 +70,8 @@ const ProductList = ({
                   {searchedProducts.map((product) => (
                     <div key={product.productId}>
                       <Product
-                        productName={product.productName}
-                        productPrice={product.productPrice}
+                        product={product}
+                        addProductInOrder={addProductInOrder}
                       />
                     </div>
                   ))}

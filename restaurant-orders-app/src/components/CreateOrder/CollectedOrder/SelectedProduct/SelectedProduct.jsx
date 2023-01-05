@@ -2,22 +2,19 @@ import { React, useState } from "react";
 import Counter from "../../../UI/Counter/Counter";
 import classes from "./SelectedProduct.module.css";
 
-const SelectedProduct = ({ product, quantity = 1, ...props }) => {
-  let [myQuantity, setMyQuantity] = useState(1);
-
+const SelectedProduct = ({ product, setQuantity, ...props }) => {
   return (
     <div className={classes.body}>
       <div className={classes.information}>
         <div>
-          <div style={{ marginBottom: "5px" }}>{product.productName}</div>
+          <div style={{ marginBottom: "5px" }}>{product.product.productName}</div>
           <div style={{display: "flex", }}>
             <Counter
-              id={product.productDetailsId}
-              value={myQuantity}
-              onChange={setMyQuantity}
+              value={product.quantity}
+              onChange={(e) => {setQuantity(product.product.productId, e)}}
               style={{marginRight: "10px"}}
             />
-            <div>{product.productPrice}</div>
+            <div>{product.product.productPrice * product.quantity}</div>
           </div>
         </div>
       </div>

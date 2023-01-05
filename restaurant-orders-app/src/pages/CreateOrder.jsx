@@ -50,8 +50,10 @@ const CreateOrder = () => {
             setProducts={setProducts}
             isProductsLoading={isProductsLoading}
             productsError={productsError}
+            newOrder={newOrder}
+            setNewOrder={setNewOrder}
           />
-          <CollectedOrder />
+          <CollectedOrder newOrder={newOrder} setNewOrder={setNewOrder} />
         </div>
       </div>
     </div>

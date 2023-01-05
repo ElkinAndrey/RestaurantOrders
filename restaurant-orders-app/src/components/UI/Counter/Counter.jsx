@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import classes from "./Counter.module.css";
 
-const Counter = ({ id, value, onChange, ...props }) => {
+const Counter = ({ value, onChange, ...props }) => {
   const validate = (v) => {
     let num = Number(v);
 

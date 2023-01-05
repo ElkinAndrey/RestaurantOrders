@@ -3,27 +3,20 @@ import Button from "../../UI/Button/Button";
 import classes from "./CollectedOrder.module.css";
 import SelectedProduct from "./SelectedProduct/SelectedProduct";
 
-const CollectedOrder = () => {
-  let products = [
-    {
-      productDetailsId: 1,
-      product: {
-        productId: 1,
-        productName: "Шаурма",
-        productPrice: 220,
-      },
-      quantity: 1,
-    },
-    {
-      productDetailsId: 2,
-      product: {
-        productId: 2,
-        productName: "Курица гриль",
-        productPrice: 151.33,
-      },
-      quantity: 2,
-    },
-  ];
+const CollectedOrder = ({ newOrder, setNewOrder }) => {
+  const setQuantity = (productId, newQuantity) => {
+    setNewOrder({
+      ...newOrder,
+      products: [
+        ...newOrder.products.map((p) => {
+          if (p.product.productId === productId) {
+            p.quantity = newQuantity;
+          }
+          return p;
+        }),
+      ],
+    });
+  };
 
   return (
     <div className={classes.body}>
@@ -33,11 +26,17 @@ const CollectedOrder = () => {
       </div>
       <div className={classes.products}>
         <div>
-          {products.map((pr) => (
-            <div key={pr.productDetailsId}>
-              <SelectedProduct product={pr.product} quantity={pr.quantity}/>
+          {newOrder.products.length !== 0 ? (
+            <div>
+              {newOrder.products.map((pr) => (
+                <div key={pr.product.productId}>
+                  <SelectedProduct product={pr} setQuantity={setQuantity} />
+                </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            <div className={classes.message}>Добавьте товары в заказ</div>
+          )}
         </div>
       </div>
     </div>
