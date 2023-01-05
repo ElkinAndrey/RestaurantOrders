@@ -12,7 +12,6 @@ const CreateOrder = () => {
 
   let [newOrder, setNewOrder] = useState({
     number: "",
-    totalPrice: 0,
     paymentMethod: "Наличные",
     products: [],
   });
