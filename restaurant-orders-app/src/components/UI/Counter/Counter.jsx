@@ -15,6 +15,10 @@ const Counter = ({ value, onChange, ...props }) => {
       onChange(0);
       return;
     }
+    if (num >= 1000) {
+      onChange(999);
+      return;
+    }
     if (num > 0 && num < 1000) {
       onChange(num);
       return;
