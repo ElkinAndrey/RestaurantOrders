@@ -29,7 +29,9 @@ const Orders = () => {
       <div style={{ display: "inline-block" }}>
         {/* Ошибка */}
         {ordersError ? (
-          <div  style={{ color: "#df0000", fontSize: "18px", textAlign: "center" }}>
+          <div
+            style={{ color: "#df0000", fontSize: "18px", textAlign: "center" }}
+          >
             Не удалось получить
             <br /> доступ к серверу
           </div>
@@ -52,7 +54,15 @@ const Orders = () => {
                     ))}
                   </div>
                 ) : (
-                  <div style={{ color: "#c0c0be", fontSize: "18px", textAlign: "center" }}>Заказы отсутствуют</div>
+                  <div
+                    style={{
+                      color: "#c0c0be",
+                      fontSize: "18px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Заказы отсутствуют
+                  </div>
                 )}
               </div>
             )}
